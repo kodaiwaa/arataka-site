@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鉄板焼 灼（アラタカ）｜札幌東区</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&display=swap');
+
+:root{
+  --black:#050301;
+  --warm:#0d0804;
+  --ember:#e85d04;
+  --gold:#c9890a;
+  --cream:#f5ede0;
+  --smoke:#9a8878;
+  --border:rgba(255,255,255,.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:'Noto Serif JP','游明朝','Yu Mincho',serif;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* ─── HEADER ─── */
+.hd{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 40px;height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  mix-blend-mode:normal;
+  transition:background .4s;
+}
+.hd.scrolled{background:rgba(5,3,1,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.hd-logo{
+  font-size:22px;font-weight:900;letter-spacing:.04em;color:var(--cream);
+  display:flex;align-items:baseline;gap:10px;
+}
+.hd-logo .sub{font-size:11px;font-weight:400;color:var(--smoke);letter-spacing:.12em}
+.hd-nav{display:flex;gap:32px;font-size:12px;letter-spacing:.14em;color:var(--smoke)}
+.hd-nav a{transition:color .2s}
+.hd-nav a:hover{color:var(--cream)}
+.hd-cta{
+  font-size:11px;letter-spacing:.12em;color:var(--ember);
+  border:1px solid var(--ember);padding:8px 18px;
+  transition:all .2s;
+}
+.hd-cta:hover{background:var(--ember);color:#fff}
+
+/* ─── HERO ─── */
+.hero{
+  height:100vh;min-height:600px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 60% 40%,rgba(80,30,0,.6) 0%,transparent 60%),
+    radial-gradient(ellipse at 20% 80%,rgba(50,15,0,.4) 0%,transparent 50%),
+    #080402;
+  /* 実際は: background-image:url(hero.jpg) center/cover */
+}
+/* 鉄板の煙をイメージしたグラデーション */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(5,3,1,1) 0%,rgba(5,3,1,.3) 40%,transparent 70%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 64px 80px;
+  width:100%;
+}
+/* 細い縦線のアクセント */
+.hero-line{
+  position:absolute;left:40px;top:50%;transform:translateY(-50%);
+  width:1px;height:120px;
+  background:linear-gradient(to bottom,transparent,var(--ember),transparent);
+}
+.hero-tag{
+  font-size:10px;letter-spacing:.32em;color:var(--ember);
+  margin-bottom:28px;display:block;
+}
+.hero-h1{
+  font-size:clamp(56px,9vw,110px);
+  font-weight:900;line-height:.88;
+  letter-spacing:-.02em;
+  color:var(--cream);
+  margin-bottom:32px;
+}
+.hero-h1 span{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(245,237,224,.3);
+  font-size:.65em;
+  margin-top:8px;
+}
+.hero-caption{
+  font-size:14px;color:var(--smoke);letter-spacing:.08em;
+  border-left:1px solid rgba(232,93,4,.4);padding-left:16px;
+  line-height:2;
+}
+/* 右下の大きな「灼」 */
+.hero-kanji{
+  position:absolute;right:-20px;bottom:-40px;z-index:1;
+  font-size:clamp(200px,30vw,380px);font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(232,93,4,.06);
+  letter-spacing:-.05em;line-height:1;
+  pointer-events:none;
+  user-select:none;
+}
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-hint{
+  position:absolute;bottom:32px;right:48px;z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.2em;color:var(--smoke);
+}
+.scroll-hint::before{
+  content:'';width:1px;height:48px;
+  background:linear-gradient(to bottom,var(--ember),transparent);
+  animation:scrollline 1.8s ease infinite;
+}
+@keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ─── CONCEPT ─── */
+.concept{
+  padding:140px 0;
+  text-align:center;
+  position:relative;
+}
+.concept::before{
+  content:'TEPPAN';
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:clamp(80px,14vw,180px);font-weight:900;letter-spacing:.1em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.03);
+  white-space:nowrap;pointer-events:none;
+}
+.concept-label{
+  font-size:10px;letter-spacing:.28em;color:var(--ember);
+  margin-bottom:40px;display:block;
+}
+.concept-h2{
+  font-size:clamp(28px,5vw,56px);
+  font-weight:900;line-height:1.2;letter-spacing:.02em;
+  color:var(--cream);margin-bottom:48px;
+}
+.concept-body{
+  font-size:15px;color:var(--smoke);line-height:2.4;
+  max-width:560px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.concept-body em{color:var(--cream);font-style:normal}
+
+/* ─── MENU FULL BLEED ─── */
+.menu-section{background:var(--warm)}
+
+/* 大きいタイトル行 */
+.menu-header{
+  padding:80px 64px 48px;
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-bottom:1px solid var(--border);
+}
+.menu-header h2{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-.02em;color:var(--cream)}
+.menu-header span{font-size:11px;letter-spacing:.2em;color:var(--smoke)}
+
+/* フルブリードメニューカード */
+.menu-stack{display:flex;flex-direction:column}
+.menu-item-big{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:520px;
+  border-bottom:1px solid var(--border);
+}
+.menu-item-big:nth-child(even){direction:rtl}
+.menu-item-big:nth-child(even)>*{direction:ltr}
+
+.menu-img{
+  position:relative;overflow:hidden;
+  background:#120c06;
+  display:flex;align-items:center;justify-content:center;
+}
+/* 実際は background-image で写真 */
+.menu-img.oki{background:radial-gradient(ellipse at 45% 45%,#5a2800 0%,#1e0c00 60%,#0a0500 100%)}
+.menu-img.tako{background:radial-gradient(ellipse at 50% 40%,#3d1800 0%,#160900 60%,#080400 100%)}
+.menu-img.yaki{background:radial-gradient(ellipse at 55% 50%,#2a2000 0%,#100c00 60%,#060400 100%)}
+.menu-img-placeholder{font-size:96px;opacity:.2}
+.menu-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,0,0,.1),rgba(0,0,0,.4));
+}
+.menu-num-bg{
+  position:absolute;bottom:-20px;right:-10px;
+  font-size:180px;font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.04);
+  line-height:1;pointer-events:none;
+}
+
+.menu-text{
+  padding:72px 64px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.menu-num{
+  font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--ember);
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.menu-num::after{content:'';flex:0 0 40px;height:1px;background:rgba(232,93,4,.4)}
+.menu-text h3{
+  font-size:clamp(32px,4vw,52px);font-weight:900;
+  color:var(--cream);letter-spacing:-.01em;line-height:1;
+  margin-bottom:24px;
+}
+.menu-text p{
+  font-size:14px;color:var(--smoke);line-height:2.2;
+  max-width:320px;
+}
+.menu-ruby{
+  font-size:12px;letter-spacing:.16em;color:rgba(245,237,224,.3);
+  margin-top:8px;display:block;
+}
+
+/* ─── KODAWARI ─── */
+.kodawari{
+  padding:120px 64px;
+  display:grid;grid-template-columns:1fr 1fr;gap:120px;
+  align-items:center;
+  position:relative;overflow:hidden;
+}
+.kodawari::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:50%;
+  background:radial-gradient(ellipse at 30% 50%,rgba(232,93,4,.04) 0%,transparent 70%);
+}
+.kodawari-label{font-size:10px;letter-spacing:.28em;color:var(--ember);margin-bottom:32px;display:block}
+.kodawari h2{
+  font-size:clamp(26px,4vw,48px);font-weight:900;
+  color:var(--cream);line-height:1.2;letter-spacing:.01em;
+  margin-bottom:40px;
+}
+.kodawari-body{font-size:14px;color:var(--smoke);line-height:2.4}
+.kodawari-body em{color:var(--cream);font-style:normal}
+
+.kodawari-right{
+  display:flex;flex-direction:column;gap:40px;
+}
+.kodawari-item{
+  padding-left:24px;
+  border-left:1px solid rgba(232,93,4,.3);
+}
+.kodawari-item .num{
+  font-size:10px;letter-spacing:.2em;color:var(--ember);margin-bottom:10px;
+}
+.kodawari-item h3{font-size:18px;font-weight:700;color:var(--cream);margin-bottom:8px}
+.kodawari-item p{font-size:13px;color:var(--smoke);line-height:2}
+
+/* ─── SYNERGY ─── */
+.synergy{
+  background:var(--warm);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:100px 64px;
+  display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:64px;
+}
+.synergy-label{font-size:10px;letter-spacing:.28em;color:rgba(255,138,31,.7);margin-bottom:24px;display:block}
+.synergy h2{
+  font-size:clamp(24px,4vw,44px);font-weight:900;
+  color:var(--cream);line-height:1.2;margin-bottom:16px;
+}
+.synergy h2 strong{color:#ff8a1f}
+.synergy p{font-size:14px;color:var(--smoke);line-height:2.2;max-width:480px}
+.btn-tel{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:#ff8a1f;color:#000;
+  padding:24px 48px;flex-shrink:0;
+  transition:background .2s;
+}
+.btn-tel:hover{background:#e07818}
+.btn-tel small{font-size:11px;font-weight:700;letter-spacing:.08em}
+.btn-tel strong{font-size:26px;font-weight:900;letter-spacing:-.01em;line-height:1}
+
+/* ─── INFO ─── */
+.info{padding:100px 64px;background:var(--black)}
+.info-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  margin-top:64px;
+}
+.info-block{
+  background:var(--warm);padding:48px;
+}
+.info-block h3{
+  font-size:10px;letter-spacing:.24em;color:var(--ember);
+  margin-bottom:28px;display:flex;align-items:center;gap:12px;
+}
+.info-block h3::after{content:'';flex:1;height:1px;background:rgba(232,93,4,.2)}
+.info-row{
+  display:flex;gap:24px;padding:14px 0;
+  border-bottom:1px solid var(--border);font-size:14px;
+}
+.info-row:last-child{border-bottom:none}
+.info-key{color:var(--smoke);flex:0 0 96px;font-size:12px;letter-spacing:.06em;padding-top:2px}
+.info-val{color:var(--cream);line-height:1.8}
+.info-val .ng{color:var(--smoke);font-size:12px}
+.info-val .ok{color:#06c755}
+
+.sns-row{display:flex;gap:12px;margin-top:32px}
+.sns-btn{
+  flex:1;
+  border:1px solid var(--border);padding:14px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:12px;letter-spacing:.06em;color:var(--smoke);
+  transition:all .2s;
+}
+.sns-btn:hover{border-color:var(--ember);color:var(--ember)}
+
+/* ─── FOOTER ─── */
+.foot{
+  background:#020100;
+  border-top:1px solid var(--border);
+  padding:48px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.foot-logo{font-size:18px;font-weight:900;color:var(--cream);letter-spacing:.04em}
+.foot-logo small{display:block;font-size:11px;font-weight:400;color:var(--smoke);letter-spacing:.12em;margin-top:4px}
+.foot-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.08em}
+.foot-group{
+  font-size:12px;color:var(--smoke);letter-spacing:.06em;
+}
+.foot-group a{color:rgba(255,138,31,.6);margin-left:8px}
+
+/* ─── FIXED BAR ─── */
+.fixed{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(5,3,1,.95);border-top:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  transform:translateY(100%);transition:transform .3s;
+}
+.fixed.visible{transform:translateY(0)}
+.fixed-inner{
+  max-width:1060px;margin:0 auto;padding:12px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.fixed-name{font-size:13px;color:var(--cream);font-weight:700}
+.fixed-time{font-size:11px;color:var(--smoke);letter-spacing:.06em}
+.fixed-btns{display:flex;gap:8px}
+.fixed-btns a{padding:10px 20px;font-size:12px;font-weight:700;letter-spacing:.06em}
+.fixed-btns .ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff}
+.fixed-btns .daiko{background:#ff8a1f;color:#000}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:860px){
+  .hd-nav,.hd-cta{display:none}
+  .hd{padding:0 24px}
+  .hero-content{padding:0 24px 64px}
+  .hero-h1{font-size:clamp(48px,12vw,80px)}
+  .concept{padding:80px 24px}
+  .menu-header{padding:48px 24px 32px}
+  .menu-item-big{grid-template-columns:1fr;min-height:auto;direction:ltr!important}
+  .menu-img{aspect-ratio:16/9;min-height:260px}
+  .menu-text{padding:40px 24px}
+  .kodawari{grid-template-columns:1fr;gap:48px;padding:80px 24px}
+  .synergy{grid-template-columns:1fr;padding:72px 24px;gap:40px}
+  .info{padding:72px 24px}
+  .info-grid{grid-template-columns:1fr}
+  .foot{flex-direction:column;gap:16px;padding:40px 24px;text-align:center}
+  .fixed-inner{padding:10px 16px}
+  .fixed-name,.fixed-time{display:none}
+  .fixed-btns a{flex:1;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd" id="hd">
+  <div class="hd-logo">
+    鉄板焼 灼
+    <span class="sub">ARATAKA</span>
+  </div>
+  <nav class="hd-nav">
+    <a href="#concept">こだわり</a>
+    <a href="#menu">メニュー</a>
+    <a href="#info">店舗情報</a>
+  </nav>
+  <a class="hd-cta" href="https://www.instagram.com/teppanyaki.arataka" target="_blank">INSTAGRAM</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-line"></div>
+  <div class="hero-kanji">灼</div>
+
+  <div class="hero-content">
+    <span class="hero-tag">SAPPORO HIGASHI-KU / TEPPAN-YAKI</span>
+    <h1 class="hero-h1">
+      焼く、という<br>仕事。
+      <span>The art of teppan.</span>
+    </h1>
+    <p class="hero-caption">
+      お好み焼き・たこ焼き・海鮮焼きそば<br>
+      北海道札幌市東区 ／ 11:00〜23:00（水定休）
+    </p>
+  </div>
+
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <span class="concept-label">CONCEPT</span>
+  <h2 class="concept-h2">
+    鉄板は、嘘をつかない。
+  </h2>
+  <p class="concept-body">
+    余計なものを足さない。<br>
+    <em>素材と火と、鉄板だけ。</em><br><br>
+    焼く人の技と、その日の食材が<br>
+    そのまま一枚に現れる。<br><br>
+    灼（アラタカ）は、そういう店です。
+  </p>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <h2>看板三品</h2>
+    <span>SIGNATURE MENU</span>
+  </div>
+
+  <div class="menu-stack">
+
+    <div class="menu-item-big">
+      <div class="menu-img oki">
+        <div class="menu-img-placeholder">焼</div>
+        <div class="menu-img-overlay"></div>
+        <div class="menu-num-bg">01</div>
+      </div>
+      <div class="menu-text">
+        <div class="menu-num">01 <span style="color:var(--smoke);font-weight:400">OKONOMIYAKI</span></div>
+        <h3>お好み焼き</h3>
+        <span class="menu-ruby">おこのみやき</span>
+        <p>
+          ふんわり生地に、踊るかつお節。<br>
+          鉄板の温度がすべてを決める、<br>
+          外カリ・中とろりの一枚。
+        </p>
+      </div>
+    </div>
+
+    <div class="menu-item-big">
+      <div class="menu-img tako">
+        <div class="menu-img-placeholder">蛸</div>
+        <div class="menu-img-overlay"></div>
+        <div class="menu-num-bg">02</div>
+      </div>
+      <div class="menu-text">
+        <div class="menu-num">02 <span style="color:var(--smoke);font-weight:400">TAKOYAKI</span></div>
+        <h3>たこ焼き</h3>
+        <span class="menu-ruby">たこやき</span>
+        <p>
+          鉄鍋で丁寧に転がして焼く。<br>
+          外はカリッと、中はとろける。<br>
+          熱々のうちに、どうぞ。
+        </p>
+      </div>
+    </div>
+
+    <div class="menu-item-big">
+      <div class="menu-img yaki">
+        <div class="menu-img-placeholder">麺</div>
+        <div class="menu-img-overlay"></div>
+        <div class="menu-num-bg">03</div>
+      </div>
+      <div class="menu-text">
+        <div class="menu-num">03 <span style="color:var(--smoke);font-weight:400">SEAFOOD YAKISOBA</span></div>
+        <h3>海鮮焼きそば</h3>
+        <span class="menu-ruby">かいせんやきそば</span>
+        <p>
+          えびとホタテを贅沢に。<br>
+          鉄板の高火力だけが作れる、<br>
+          焦げの香りと深い旨み。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KODAWARI -->
+<section class="kodawari">
+  <div>
+    <span class="kodawari-label">KODAWARI</span>
+    <h2>なぜ、鉄板なのか。</h2>
+    <p class="kodawari-body">
+      フライパンではなく、鉄板。<br>
+      それは単なる調理器具の違いではない。<br><br>
+      <em>蓄熱と、火力と、焦げの制御。</em><br><br>
+      鉄板だけが持つ性質が、<br>
+      お好み焼きをお好み焼きたらしめる。<br>
+      灼は、その鉄板に向き合い続けます。
+    </p>
+  </div>
+  <div class="kodawari-right">
+    <div class="kodawari-item">
+      <div class="num">01</div>
+      <h3>鉄板の温度管理</h3>
+      <p>生地を流す前の鉄板の温度が、仕上がりを決める。高すぎず、低すぎず。経験でしかわからない、その一点を毎回守り続けています。</p>
+    </div>
+    <div class="kodawari-item">
+      <div class="num">02</div>
+      <h3>素材の鮮度</h3>
+      <p>海鮮焼きそばのえびとホタテは、鮮度が命。仕入れにこだわり、その日の状態に合わせて火加減を変えます。</p>
+    </div>
+    <div class="kodawari-item">
+      <div class="num">03</div>
+      <h3>提供のタイミング</h3>
+      <p>鉄板料理は、焼き上がりが全て。最も旨い瞬間に届けるために、提供のタイミングを一品ずつ計っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SYNERGY -->
+<section class="synergy">
+  <div>
+    <span class="synergy-label">関連サービス</span>
+    <h2>灼で飲んだ夜は、<br><strong>Long定額代行</strong> で帰る。</h2>
+    <p>同じ北22条東エリアで運営する運転代行サービス。札幌市内全域をカバー。深夜・日祝の割増は一切なし。安心して最後の一杯まで楽しんでください。</p>
+  </div>
+  <a class="btn-tel" href="tel:011-374-7349">
+    <small>運転代行 今すぐ予約</small>
+    <strong>011-374-7349</strong>
+  </a>
+</section>
+
+<!-- INFO -->
+<section class="info" id="info">
+  <div style="max-width:1060px;margin:0 auto">
+    <span style="font-size:10px;letter-spacing:.28em;color:var(--ember)">SHOP INFO</span>
+    <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--cream);margin-top:16px;letter-spacing:-.01em">店舗情報</h2>
+    <div class="info-grid">
+      <div class="info-block">
+        <h3>基本情報</h3>
+        <div class="info-row"><span class="info-key">店名</span><span class="info-val">鉄板焼 灼（アラタカ）</span></div>
+        <div class="info-row"><span class="info-key">営業時間</span><span class="info-val">11:00〜23:00<br><span class="ng">定休日：水曜日</span></span></div>
+        <div class="info-row"><span class="info-key">住所</span><span class="info-val">北海道札幌市東区<br>北22条東10-3-12</span></div>
+        <div class="info-row"><span class="info-key">アクセス</span><span class="info-val">元町駅より徒歩約9分</span></div>
+        <div class="info-row"><span class="info-key">駐車場</span><span class="info-val">あり</span></div>
+        <div class="info-row"><span class="info-key">禁煙</span><span class="info-val">全席禁煙</span></div>
+        <div class="info-row">
+          <span class="info-key">お支払い</span>
+          <span class="info-val">
+            <span class="ok">PayPay ○</span><br>
+            <span class="ng">カード不可 ／ 電子マネー不可</span>
+          </span>
+        </div>
+      </div>
+      <div class="info-block">
+        <h3>SNS・最新情報</h3>
+        <p style="font-size:13px;color:var(--smoke);line-height:2;margin-bottom:8px">メニューや日々の情報はSNSで発信しています。最新情報はInstagramをご確認ください。</p>
+        <div class="sns-row">
+          <a class="sns-btn" href="https://www.instagram.com/teppanyaki.arataka" target="_blank">
+            Instagram
+          </a>
+          <a class="sns-btn" href="https://x.com/arataka2024" target="_blank">
+            <span style="font-weight:900">𝕏</span> @arataka2024
+          </a>
+        </div>
+        <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border)">
+          <p style="font-size:11px;letter-spacing:.16em;color:var(--smoke);margin-bottom:16px">MAP</p>
+          <div style="background:#0d0804;border:1px solid var(--border);padding:32px;text-align:center;border-radius:2px">
+            <p style="font-size:13px;color:var(--smoke);margin-bottom:12px">札幌市東区北22条東10-3-12</p>
+            <a href="https://maps.google.com/?q=北海道札幌市東区北22条東10-3-12" target="_blank" style="font-size:12px;color:var(--ember);letter-spacing:.08em">Google マップで開く →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-logo">
+    鉄板焼 灼（アラタカ）
+    <small>ARATAKA / SAPPORO</small>
+  </div>
+  <div class="foot-group">
+    運営：One Infinity
+    <a href="tel:011-374-7349">運転代行 Long定額代行</a>
+  </div>
+  <div class="foot-copy">© 2026 鉄板焼 灼 / One Infinity</div>
+</footer>
+
+<!-- FIXED BAR -->
+<div class="fixed" id="fixed">
+  <div class="fixed-inner">
+    <div>
+      <div class="fixed-name">鉄板焼 灼（アラタカ）</div>
+      <div class="fixed-time">11:00〜23:00 ／ 水定休</div>
+    </div>
+    <div class="fixed-btns">
+      <a class="ig" href="https://www.instagram.com/teppanyaki.arataka" target="_blank">Instagram</a>
+      <a class="daiko" href="tel:011-374-7349">帰りの代行</a>
+    </div>
+  </div>
+</div>
+
+<script>
+var hd = document.getElementById('hd');
+var fixed = document.getElementById('fixed');
+window.addEventListener('scroll', function(){
+  var y = window.scrollY;
+  hd.classList.toggle('scrolled', y > 60);
+  fixed.classList.toggle('visible', y > window.innerHeight * .7);
+});
+</script>
+
+<script src="assets/preview-gate.js"></script>
+</body>
+</html>
