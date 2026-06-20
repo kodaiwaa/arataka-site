@@ -225,6 +225,16 @@ a{color:inherit;text-decoration:none}
   margin-top:8px;display:block;
 }
 
+/* ─── QUICK INFO BAR ─── */
+.quick-info{background:#0d0804;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 24px}
+.qi-inner{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center}
+.qi-item{display:flex;flex-direction:column;gap:4px}
+.qi-label{font-size:10px;letter-spacing:.18em;color:var(--ember)}
+.qi-val{font-size:15px;font-weight:700;color:var(--cream)}
+.qi-ig{margin-left:auto;font-size:13px;color:var(--ember);text-decoration:none;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--ember);padding-bottom:2px}
+.qi-ig:hover{opacity:.7}
+@media(max-width:640px){.qi-ig{margin-left:0;width:100%}}
+
 /* ─── KODAWARI ─── */
 .kodawari{
   padding:120px 64px;
@@ -427,6 +437,31 @@ a{color:inherit;text-decoration:none}
     灼（アラタカ）は、そういう店です。
   </p>
 </section>
+
+<!-- QUICK INFO BAR -->
+<div class="quick-info">
+  <div class="qi-inner">
+    <div class="qi-item">
+      <span class="qi-label">営業時間</span>
+      <span class="qi-val">11:00〜23:00</span>
+    </div>
+    <div class="qi-item">
+      <span class="qi-label">定休日</span>
+      <span class="qi-val">水曜日</span>
+    </div>
+    <div class="qi-item">
+      <span class="qi-label">場所</span>
+      <span class="qi-val">札幌市東区 北22条東10</span>
+    </div>
+    <div class="qi-item">
+      <span class="qi-label">駐車場</span>
+      <span class="qi-val">あり</span>
+    </div>
+    <a class="qi-ig" href="https://www.instagram.com/teppanyaki.arataka" target="_blank" rel="noopener">
+      Instagram で最新情報を見る →
+    </a>
+  </div>
+</div>
 
 <!-- MENU -->
 <section class="menu-section" id="menu">
